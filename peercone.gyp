@@ -46,6 +46,8 @@
         'peercone/defaults.h',
         'peercone/peer_connection_client.cc',
         'peercone/peer_connection_client.h',
+        'peercone/vlc_video_capturer.cc',
+        'peercone/vlc_video_capturer.h',
       ],
       'include_dirs+': [
         'webrtc/',
@@ -62,7 +64,7 @@
             'peercone/linux/main_wnd.h',
           ],
           'cflags': [
-            '<!@(pkg-config --cflags glib-2.0 gobject-2.0 gtk+-2.0)',
+            '<!@(pkg-config --cflags glib-2.0 gobject-2.0 gtk+-2.0 vlc-plugin)',
           ],
           'link_settings': {
             'ldflags': [
@@ -76,6 +78,7 @@
               '-lXcomposite',
               '-lXext',
               '-lXrender',
+              '<!@(pkg-config --libs vlc-plugin)',
             ],
           },
         }],  # OS=="linux"
